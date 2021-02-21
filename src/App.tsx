@@ -15,12 +15,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
-        <Button disabled>Hello</Button>
+        <Button autoFocus onClick={(e) => {alert(11)}} className="aaa" >Hello</Button>
+        <Button  disabled>Hello</Button>
         <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>Hello</Button>
         <Button btnType={ButtonType.Danger} size={ButtonSize.Small}>Hello</Button>
         <Button disabled btnType={ButtonType.Link} href="https://www.baidu.com">Hello</Button>
-
 
 
         <p>
