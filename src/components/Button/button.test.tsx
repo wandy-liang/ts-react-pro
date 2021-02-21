@@ -62,8 +62,3 @@ describe('test button component', () => {
     })
 })
 
-
-
-
-
-

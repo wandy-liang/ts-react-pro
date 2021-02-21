@@ -7,7 +7,11 @@ import LikeButton from './components/LikeButton'
 import MouseTracker from './components/MouseTracker'
 import useMousePosition from './hooks/useMousePosition'
 
-import Button, {ButtonType,ButtonSize} from './components/Button/button'
+import Button, { ButtonType, ButtonSize } from './components/Button/button'
+
+import MenuItem from './components/Menu/menuItem'
+import Menu from './components/Menu/menu';
+
 
 function App() {
   const positions = useMousePosition()
@@ -15,8 +19,19 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Button autoFocus onClick={(e) => {alert(11)}} className="aaa" >Hello</Button>
-        <Button  disabled>Hello</Button>
+        <Menu defaultIndex={0}>
+          <MenuItem>
+            cool link
+          </MenuItem>
+          <MenuItem>
+            cool link 2
+          </MenuItem>
+          <MenuItem>
+            cool link 3
+          </MenuItem>
+        </Menu>
+        <Button autoFocus onClick={(e) => { alert(11) }} className="aaa" >Hello</Button>
+        <Button disabled>Hello</Button>
         <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>Hello</Button>
         <Button btnType={ButtonType.Danger} size={ButtonSize.Small}>Hello</Button>
         <Button disabled btnType={ButtonType.Link} href="https://www.baidu.com">Hello</Button>
