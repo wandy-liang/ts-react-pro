@@ -1,6 +1,6 @@
-import React, { useState, createContext } from 'react'
+import React, { FC, useState, createContext, CSSProperties } from 'react'
 import classNames from 'classnames'
-import { type } from 'os'
+import {MenuItemProps} from './menuItem'
 
 type MenuMode = 'horizotal' | 'vertical'
 type SelectCallBack = (selectIndex: number) => void
@@ -19,11 +19,12 @@ interface IMenuContext {
 }
 export const MenuContext = createContext<IMenuContext>({ index: 0 })
 
-const Menu: React.FC<MenuProps> = (props) => {
+export const Menu: React.FC<MenuProps> = (props) => {
     const { className, mode, style, children, defaultIndex, onSelect } = props
     const [currentActive, setActive] = useState(defaultIndex)
     const classes = classNames('wandy-menu', className, {
-        'menu-vertical': mode === 'vertical'
+        'menu-vertical': mode === 'vertical',
+        'menu-horizontal': mode !== 'vertical',
     })
     const handleClick = (index: number) => {
         setActive(index)
@@ -36,8 +37,10 @@ const Menu: React.FC<MenuProps> = (props) => {
         onSelect: handleClick
     }
     return (
-        <ul className={classes} style={style}>
-            {children}
+        <ul className={classes} style={style} data-testid="test-menu">
+            <MenuContext.Provider value={passedContext}>
+                {children}
+            </MenuContext.Provider>
         </ul>
     )
 }
